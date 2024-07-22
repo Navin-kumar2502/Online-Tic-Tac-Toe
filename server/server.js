@@ -7,15 +7,15 @@ const app = express();
 const server = http.createServer(app);
 const io = socketIo(server, {
   cors: {
-    origin: 'http://localhost:5173', // Your client's origin
-    methods: ['GET', 'POST']
+    origin: "https://online-tic-tac-toe-client.onrender.com", // Update this line
+    methods: ["GET", "POST"]
   }
 });
 
+app.use(cors({
+  origin: "https://online-tic-tac-toe-client.onrender.com" // Update this line
+}));
 const PORT = process.env.PORT || 4000;
-
-app.use(cors({ origin: 'http://localhost:5173' }));
-
 let rooms = {};
 
 io.on('connection', (socket) => {
